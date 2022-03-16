@@ -23,19 +23,42 @@ document.getElementById('btn-start').addEventListener('click', function(){
     
     // vado a creare la griglia in base alle celle
     gridCreator(cellNumber);
-    console.log(gridCreator(cellNumber))
+    gridCreator(cellNumber)[1].classList.add('color-ok');
+    console.log(gridCreator(cellNumber)[1]);
+    console.log(gridCreator(cellNumber).length);
+    
 
     // creo un array per generare 16 numeri unici
     const bombs = [];
 
     // genero un array con la posizione delle bombe
     onlyOneNumberGenerator(1, cellNumber, bombs, bombNumber);
-    console.log(bombs)
+    console.log(bombs);
+    console.log(bombs[1]);
 
+    // for (let i = 0; i<cellNumber; i++) {
+    //     if (gridCreator(cellNumber)[i] == )
+    // }
     
     
 }
 );
+
+// unisco due funzioni per snellire il processo
+
+// function applyClickClass(min, max, numberPresents, totNumber) {
+//     gridCreator(max);
+//     console.log(gridCreator(max))
+
+//     // creo un array per generare 16 numeri unici
+//     const numberPresents = [];
+
+//     // genero un array con la posizione delle bombe
+//     onlyOneNumberGenerator(min, max, numberPresents, totNumber);
+
+//     if ()
+    
+// }
 
 // funzione creo una cella
 function cellCreator() {
@@ -86,11 +109,11 @@ function randomNumberGenerator (min, max) {
     return randomNumber;
 }
 // creo funzione per ottenere totNumeri(nel mio caso 16, le bombe) presenti solo una volta nel segmento
-function onlyOneNumberGenerator (min, max, numberPresent, totNumber) {
-    while (numberPresent.length < totNumber) {
+function onlyOneNumberGenerator (min, max, numberPresents, totNumber) {
+    while (numberPresents.length < totNumber) {
         let number = randomNumberGenerator(min, max);
-        if (!numberPresent.includes(number)) {
-            numberPresent.push(number)
+        if (!numberPresents.includes(number)) {
+            numberPresents.push(number)
         }
     }
     
