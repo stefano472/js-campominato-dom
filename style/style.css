@@ -20,7 +20,7 @@ h1 {
 #grid {
   width: 80vw;
   height: 80vw;
-  margin-top: 1rem;
+  margin: 1rem 0 3rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -51,6 +51,7 @@ h1 {
   width: calc(100% / 7 - 0.5rem * 6 / 7);
 }
 
-.click {
-  background-color: lightskyblue;
+.color-ok {
+  color: white;
+  background-color: #4f7993;
 }
