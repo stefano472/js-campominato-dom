@@ -94,7 +94,8 @@ function addFunctionsToCells (bombPositions) {
                 // se ho premuto tutte le caselle buone ho vinto ed appare lo score
                 document.getElementById('score').innerText = `Game Completed: ${liveScore} %`;
                 if(score >= (cellNumber - bombNumber)) {
-                    document.getElementById('result').innerText = `Congratulatiooonnn you've won!!!`
+                    document.getElementById('result').innerText = `Congratulatiooonnn you've won!!!`;
+                    addPointerEventsNone();
                 }
             }
             
