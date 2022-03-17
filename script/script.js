@@ -29,10 +29,17 @@ in cui ogni cella contiene un numero tra quelli compresi in un range:
 // creo una const che va a modificare il numero di bombe presenti
 const bombNumber = 16;
 let cellNumber;
+let score = 0;
+
 
 // inizio il gioco al click del bottone
 document.getElementById('btn-start').addEventListener('click', function(){
-    
+
+    // vari reset allo start del programma
+    document.getElementById('grid').classList.remove('block-cell');
+    document.getElementById('result').innerText = ``;
+    document.getElementById('score').innerText = ``;
+
     // al click acquisisco il numero di celle selezionato (difficoltà)
     cellNumber = document.getElementById('grid-width').value;
     console.log(cellNumber)
@@ -44,24 +51,15 @@ document.getElementById('btn-start').addEventListener('click', function(){
     const bombPositions = onlyOneNumberInArrayGenerator(1, cellNumber, bombNumber);
     console.log(bombPositions);
 
-
+    // funzione generale che aggiunge le classi alle celle
     addFunctionsToCells (bombPositions);
-    /*
-    // ciclo per aggiungere classi colorate in base alle bombe
-    for (let i = 0; i<cellNumber; i++) {
-        // aggiungo i colori in base a click
-        arrayCelle[i].addEventListener('click', ()=>  bombOrNot (i, arrayCelle, bombPositions))
-        
-    }
-    */
-
 }
 );
 
 // funzione per aggiungere le classi bomba o no in base proprio a dove sono le bombe ---> argomento (arrayposizione bombe)
 function addFunctionsToCells (bombPositions) {
     // creo var per il punteggio
-    let score = 0;
+
 
     // vado a richiamare i div creati in precedenza per poter aggiungere altre classi
     const arrayCelle = document.querySelectorAll('.cell');
@@ -70,6 +68,7 @@ function addFunctionsToCells (bombPositions) {
     for (let i = 0; i<cellNumber; i++) {
         // aggiungo i colori in base a click
         arrayCelle[i].addEventListener('click', ()=>  {
+
             // dalla funzione bombOrNot torna una booleana vera o falsa la metto in una const per utilizzarla successivamente
             // quando sarà vera il gioco finisce
             const gameOver = bombOrNot (i, arrayCelle, bombPositions)
@@ -81,14 +80,24 @@ function addFunctionsToCells (bombPositions) {
                 // faccio apparire tutte le bombe applicando classe error da css
                 cellOver (bombPositions);
                 // faccio apparire testo che mi specifica che ho perso ed il punteggio in % --> 100 / (totcells - bombe) *score 
+                document.getElementById('result').innerText = `Unfortunately you've lost, try again!`
             } else {
+
+                // variabile live score
+                const liveScore = Math.round(100 / (cellNumber - bombNumber) * (score + 1));
+            
                 // aumento il punteggio di 1 perchè vuol dire che ho premuto casella buona
                 score++;
                 // applico il pointer event none alla casella cliccata in modo d non aumentare lo score schiacciando ancora
                 arrayCelle[i].classList.add('block-cell');
                 console.log(score)
                 // se ho premuto tutte le caselle buone ho vinto ed appare lo score
+                document.getElementById('score').innerText = `Game Completed: ${liveScore} %`;
+                if(score >= (cellNumber - bombNumber)) {
+                    document.getElementById('result').innerText = `Congratulatiooonnn you've won!!!`
+                }
             }
+            
         }
         )
         

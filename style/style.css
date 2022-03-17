@@ -20,7 +20,7 @@ h1 {
 #grid {
   width: 80vw;
   height: 80vw;
-  margin: 1rem 0 3rem;
+  margin: 1rem 0 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -64,4 +64,8 @@ h1 {
 .color-error {
   color: white;
   background-color: #bd6464;
+}
+
+.score {
+  text-align: center;
 }
