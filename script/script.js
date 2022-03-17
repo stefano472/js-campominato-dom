@@ -29,28 +29,27 @@ in cui ogni cella contiene un numero tra quelli compresi in un range:
 // creo una const che va a modificare il numero di bombe presenti
 const bombNumber = 16;
 let cellNumber;
-let score = 0;
 
 
 // inizio il gioco al click del bottone
 document.getElementById('btn-start').addEventListener('click', function(){
-
+    
     // vari reset allo start del programma
     document.getElementById('grid').classList.remove('block-cell');
     document.getElementById('result').innerText = ``;
     document.getElementById('score').innerText = ``;
-
+    
     // al click acquisisco il numero di celle selezionato (difficoltà)
     cellNumber = document.getElementById('grid-width').value;
     console.log(cellNumber)
-
+    
     // vado a creare la griglia in base alle celle che comparirà nel DOM 
     gridCreator(cellNumber);
 
     // creo un array per generare 16 numeri unici che saranno la posizione delle bombe
     const bombPositions = onlyOneNumberInArrayGenerator(1, cellNumber, bombNumber);
     console.log(bombPositions);
-
+    
     // funzione generale che aggiunge le classi alle celle
     addFunctionsToCells (bombPositions);
 }
@@ -59,7 +58,7 @@ document.getElementById('btn-start').addEventListener('click', function(){
 // funzione per aggiungere le classi bomba o no in base proprio a dove sono le bombe ---> argomento (arrayposizione bombe)
 function addFunctionsToCells (bombPositions) {
     // creo var per il punteggio
-
+    let score = 0;
 
     // vado a richiamare i div creati in precedenza per poter aggiungere altre classi
     const arrayCelle = document.querySelectorAll('.cell');
