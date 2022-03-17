@@ -9,7 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: lightcoral;
+  background-color: lightgoldenrodyellow;
 }
 
 h1 {
@@ -24,19 +24,24 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  cursor: pointer;
 }
 
 .cell {
-  font-size: clamp(0.8rem, 2vw, 2rem);
-  cursor: pointer;
+  font-size: 0.8rem;
   text-align: center;
   vertical-align: middle;
-  background-color: lightcoral;
-  box-shadow: 3px 3px 5px #af5d5d, -3px -3px 5px #ffa3a3;
+  background-color: #fafad2;
+  box-shadow: 3px 3px 2px #646454, -3px -3px 2px #fffff2;
   border-radius: 5px;
+  padding: 5px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
+}
+
+.block-cell {
+  pointer-events: none;
 }
 
 .w-10 {
@@ -54,4 +59,9 @@ h1 {
 .color-ok {
   color: white;
   background-color: #4f7993;
+}
+
+.color-error {
+  color: white;
+  background-color: #bd6464;
 }
